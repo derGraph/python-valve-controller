@@ -1,5 +1,5 @@
 # Flow control of a turbine
-This project is a PI flow control to keep the waterlevel in a simulated surge chamber constant. It is written in python and can be opened with pyCharm.
+This project is a PI flow control to keep the waterlevel in a simulated surge chamber constant. It is written in python and should be opened with pyCharm.
 
 The code is described with comments.
 
