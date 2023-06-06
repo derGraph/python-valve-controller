@@ -1,0 +1,46 @@
+<!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #204a87; font-weight: bold">import</span> <span style="color: #000000">matplotlib.pyplot</span> <span style="color: #204a87; font-weight: bold">as</span> <span style="color: #000000">plt</span>
+<span style="color: #8f5902; font-style: italic">#Anfangswasserstand (m)</span>
+<span style="color: #000000">wasserstand</span> <span style="color: #ce5c00; font-weight: bold">=</span> <span style="color: #0000cf; font-weight: bold">1</span>
+<span style="color: #8f5902; font-style: italic">#Beckengroeße (m2)</span>
+<span style="color: #000000">becken</span> <span style="color: #ce5c00; font-weight: bold">=</span> <span style="color: #0000cf; font-weight: bold">4</span>
+<span style="color: #8f5902; font-style: italic">#Anfangszufluss (m3)</span>
+<span style="color: #000000">zufluss</span> <span style="color: #ce5c00; font-weight: bold">=</span> <span style="color: #0000cf; font-weight: bold">1</span>
+<span style="color: #8f5902; font-style: italic">#Sollhoehe (m)</span>
+<span style="color: #000000">sollhoehe</span> <span style="color: #ce5c00; font-weight: bold">=</span> <span style="color: #0000cf; font-weight: bold">1</span>
+<span style="color: #8f5902; font-style: italic">#Duesenauslass (m3)</span>
+<span style="color: #000000">duese</span> <span style="color: #ce5c00; font-weight: bold">=</span> <span style="color: #0000cf; font-weight: bold">1</span>
+<span style="color: #8f5902; font-style: italic">###RECHENVARIABLEN</span>
+<span style="color: #8f5902; font-style: italic">#Fehlervariable</span>
+<span style="color: #000000">error</span> <span style="color: #ce5c00; font-weight: bold">=</span> <span style="color: #0000cf; font-weight: bold">0</span>
+<span style="color: #000000">p</span> <span style="color: #ce5c00; font-weight: bold">=</span> <span style="color: #0000cf; font-weight: bold">2</span>
+<span style="color: #000000">i</span> <span style="color: #ce5c00; font-weight: bold">=</span> <span style="color: #0000cf; font-weight: bold">4</span>
+<span style="color: #000000">time</span> <span style="color: #ce5c00; font-weight: bold">=</span> <span style="color: #0000cf; font-weight: bold">0</span>
+<span style="color: #000000">wasserliste</span> <span style="color: #ce5c00; font-weight: bold">=</span> <span style="color: #000000; font-weight: bold">[]</span>
+<span style="color: #000000">plt</span><span style="color: #ce5c00; font-weight: bold">.</span><span style="color: #000000">ion</span><span style="color: #000000; font-weight: bold">()</span>
+<span style="color: #8f5902; font-style: italic">#Animationsschleife bis 20</span>
+<span style="color: #204a87; font-weight: bold">while</span> <span style="color: #000000">time</span> <span style="color: #ce5c00; font-weight: bold">&lt;</span> <span style="color: #0000cf; font-weight: bold">20</span><span style="color: #000000; font-weight: bold">:</span>
+    <span style="color: #8f5902; font-style: italic">#nach 8 Zeiteinheiten wird Zufluss auf 1.4 erhoeht</span>
+    <span style="color: #204a87; font-weight: bold">if</span> <span style="color: #000000">time</span> <span style="color: #ce5c00; font-weight: bold">==</span> <span style="color: #0000cf; font-weight: bold">8</span><span style="color: #000000; font-weight: bold">:</span>
+        <span style="color: #000000">zufluss</span> <span style="color: #ce5c00; font-weight: bold">=</span> <span style="color: #0000cf; font-weight: bold">1.4</span>
+
+    <span style="color: #8f5902; font-style: italic">#berechnung der Duesenstellung</span>
+    <span style="color: #000000">duese</span> <span style="color: #ce5c00; font-weight: bold">+=</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">wasserstand</span><span style="color: #ce5c00; font-weight: bold">-</span><span style="color: #000000">sollhoehe</span><span style="color: #000000; font-weight: bold">)</span><span style="color: #ce5c00; font-weight: bold">*</span><span style="color: #000000">p</span> <span style="color: #ce5c00; font-weight: bold">-</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">error</span><span style="color: #ce5c00; font-weight: bold">-</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">wasserstand</span><span style="color: #ce5c00; font-weight: bold">-</span><span style="color: #000000">sollhoehe</span><span style="color: #000000; font-weight: bold">))</span><span style="color: #ce5c00; font-weight: bold">*</span><span style="color: #000000">i</span>
+    <span style="color: #000000">error</span> <span style="color: #ce5c00; font-weight: bold">=</span> <span style="color: #000000">wasserstand</span><span style="color: #ce5c00; font-weight: bold">-</span><span style="color: #000000">sollhoehe</span>
+
+    <span style="color: #8f5902; font-style: italic">#Wasserstand in Physikmodell ändern</span>
+    <span style="color: #000000">wasserstand</span> <span style="color: #ce5c00; font-weight: bold">=</span> <span style="color: #000000">wasserstand</span> <span style="color: #ce5c00; font-weight: bold">+</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">zufluss</span> <span style="color: #ce5c00; font-weight: bold">-</span> <span style="color: #000000">duese</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #ce5c00; font-weight: bold">/</span> <span style="color: #000000">becken</span>
+    <span style="color: #000000">wasserliste</span><span style="color: #ce5c00; font-weight: bold">.</span><span style="color: #000000">append</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">wasserstand</span><span style="color: #000000; font-weight: bold">)</span>
+
+    <span style="color: #8f5902; font-style: italic">#Graph zeichnen</span>
+    <span style="color: #000000">plt</span><span style="color: #ce5c00; font-weight: bold">.</span><span style="color: #000000">clf</span><span style="color: #000000; font-weight: bold">()</span>
+    <span style="color: #000000">plt</span><span style="color: #ce5c00; font-weight: bold">.</span><span style="color: #000000">plot</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">wasserliste</span><span style="color: #000000; font-weight: bold">)</span>
+    <span style="color: #000000">plt</span><span style="color: #ce5c00; font-weight: bold">.</span><span style="color: #000000">title</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #4e9a06">&quot;Zuflussänderung von 1.0 auf 1.4 bei 10&quot;</span><span style="color: #000000; font-weight: bold">)</span>
+    <span style="color: #000000">plt</span><span style="color: #ce5c00; font-weight: bold">.</span><span style="color: #000000">ylabel</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #4e9a06">&quot;Wasserhoehe (m)&quot;</span><span style="color: #000000; font-weight: bold">)</span>
+    <span style="color: #000000">plt</span><span style="color: #ce5c00; font-weight: bold">.</span><span style="color: #000000">xlabel</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #4e9a06">&quot;Zeit&quot;</span><span style="color: #000000; font-weight: bold">)</span>
+    <span style="color: #000000">plt</span><span style="color: #ce5c00; font-weight: bold">.</span><span style="color: #000000">pause</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #0000cf; font-weight: bold">0.0000001</span><span style="color: #000000; font-weight: bold">)</span>
+
+    <span style="color: #8f5902; font-style: italic">#erhoehen der Zeit</span>
+    <span style="color: #000000">time</span> <span style="color: #ce5c00; font-weight: bold">+=</span> <span style="color: #0000cf; font-weight: bold">1</span>
+<span style="color: #8f5902; font-style: italic">#Anzeigen des Endergebnisses</span>
+<span style="color: #000000">plt</span><span style="color: #ce5c00; font-weight: bold">.</span><span style="color: #000000">show</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">block</span><span style="color: #ce5c00; font-weight: bold">=</span><span style="color: #3465a4">True</span><span style="color: #000000; font-weight: bold">)</span>
+</pre></div>
